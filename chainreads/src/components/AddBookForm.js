@@ -8,8 +8,6 @@ function AddBookForm() {
 
     const handleAddBook = async (e) => {
         e.preventDefault();
-
-        // You can add a loading state or other UI updates here
         try {
             const accounts = await web3.eth.getAccounts();
             const selectedAccount = accounts[0];
@@ -20,6 +18,7 @@ function AddBookForm() {
             // Handle error
             console.error(error);
         }
+        // You can add a loading state or other UI updates here
     };
 
     return (
