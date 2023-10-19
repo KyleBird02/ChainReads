@@ -1,5 +1,3 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
-import "./styles/Home.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import BookList from "./components/BookList";
@@ -12,8 +10,8 @@ function App() {
         <Routes>
             <Route path="/" element={<BookList />} />
             <Route path="/add" element={<AddBookForm />} />
-            {/* <Route path="/borrow" element={<BorrowBookForm />} /> */}
-            {/* <Route path="/return" element={<ReturnBookForm />} /> */}
+            <Route path="/borrow" element={<BorrowBookForm />} />
+            <Route path="/return" element={<ReturnBookForm />} />
         </Routes>
     );
 }

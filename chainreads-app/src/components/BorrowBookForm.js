@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useStateContext } from "../context";
+import { useNavigate } from "react-router-dom";
 
 function BorrowBookForm() {
     const [bookId, setBookId] = useState("");
     const { borrowBook, borrowBookLoading } = useStateContext();
+    const navigate = useNavigate();
 
     const handleBorrowBook = async () => {
         if (bookId !== "") {
             try {
                 await borrowBook(bookId);
+                navigate("/");
                 console.log("Book borrowed successfully!");
             } catch (error) {
                 console.error("Error borrowing book:", error);
