@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import contract from "../contract";
-import web3 from "../web3";
+import { useStateContext } from "../context";
 
 function ReturnBookForm() {
     const [bookId, setBookId] = useState("");
+    const { returnBook, returnBookLoading } = useStateContext();
 
     const handleReturnBook = async () => {
         if (bookId !== "") {
-            const accounts = await web3.eth.getAccounts();
-            const selectedAccount = accounts[0];
-            await contract.methods.returnBook(bookId).send({
-                from: selectedAccount, // Replace with the user's Metamask address
-            });
-            // You can add a loading state or other UI updates here
+            try {
+                await returnBook(bookId);
+                console.log("Book returned successfully!");
+            } catch (error) {
+                console.error("Error returning book:", error);
+            }
         } else {
-            // Handle empty input case
             alert("Please enter a book ID.");
         }
     };
@@ -27,7 +26,9 @@ function ReturnBookForm() {
                 value={bookId}
                 onChange={(e) => setBookId(e.target.value)}
             />
-            <button onClick={handleReturnBook}>Return Book</button>
+            <button onClick={handleReturnBook} disabled={returnBookLoading}>
+                {returnBookLoading ? "Returning..." : "Return Book"}
+            </button>
         </div>
     );
 }

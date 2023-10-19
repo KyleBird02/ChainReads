@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import contract from "../contract";
-import web3 from "../web3";
+import { useStateContext } from "../context";
 
 function BorrowBookForm() {
     const [bookId, setBookId] = useState("");
+    const { borrowBook, borrowBookLoading } = useStateContext();
 
     const handleBorrowBook = async () => {
         if (bookId !== "") {
-            const accounts = await web3.eth.getAccounts();
-            const selectedAccount = accounts[0];
-            await contract.methods.borrowBook(bookId).send({
-                from: selectedAccount, // Replace with the user's Metamask address
-            });
-            // You can add a loading state or other UI updates here
+            try {
+                await borrowBook(bookId);
+                console.log("Book borrowed successfully!");
+            } catch (error) {
+                console.error("Error borrowing book:", error);
+            }
         } else {
-            // Handle empty input case
             alert("Please enter a book ID.");
         }
     };
@@ -27,7 +26,9 @@ function BorrowBookForm() {
                 value={bookId}
                 onChange={(e) => setBookId(e.target.value)}
             />
-            <button onClick={handleBorrowBook}>Borrow Book</button>
+            <button onClick={handleBorrowBook} disabled={borrowBookLoading}>
+                {borrowBookLoading ? "Borrowing..." : "Borrow Book"}
+            </button>
         </div>
     );
 }
