@@ -5,7 +5,6 @@ import App from "./App";
 import { Sepolia } from "@thirdweb-dev/chains";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { StateContextProvider } from "./context";
-import "./styles/globals.css";
 
 // secret key = "sWTZozLPIl7fHRebYjgWHl8frh71O5VDq2OXwOAPCz81nXXNkPUk2kU0Wt3cm9srDuahog041MSeAimlj2ufFA"
 const container = document.getElementById("root");
