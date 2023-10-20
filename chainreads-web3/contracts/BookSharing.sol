@@ -20,6 +20,22 @@ contract BookSharing {
         _;
     }
 
+    function getBook(uint256 _id) external view returns (Book memory) {
+        return books[_id];
+    }
+
+    function getTotalBooks() external view returns (uint256) {
+        return totalBooks;
+    }
+
+    function getAllBooks() external view returns (Book[] memory) {
+        Book[] memory allBooks = new Book[](totalBooks);
+        for (uint256 i = 1; i <= totalBooks; i++) {
+            allBooks[i - 1] = books[i];
+        }
+        return allBooks;
+    }
+    
     modifier onlyOwner(uint256 _id) {
         require(msg.sender == books[_id].owner, "Only the owner can perform this action");
         _;
