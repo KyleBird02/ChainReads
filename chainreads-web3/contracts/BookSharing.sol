@@ -47,12 +47,12 @@ contract BookSharing {
         emit BookAdded(totalBooks, _title, _author, msg.sender);
     }
 
-    function borrowBook(uint256 _id) external bookExists(_id) onlyOwner(_id) {
+    function borrowBook(uint256 _id) external bookExists(_id){
         require(books[_id].isAvailable, "Book is not available for borrowing");
         books[_id].isAvailable = false;
     }
 
-    function returnBook(uint256 _id) external bookExists(_id) onlyOwner(_id) {
+    function returnBook(uint256 _id) external bookExists(_id){
         require(!books[_id].isAvailable, "Book is already available");
         books[_id].isAvailable = true;
     }
