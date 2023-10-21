@@ -55,7 +55,9 @@ function BorrowBookForm() {
             <div>
                 <div className="main-header">
                     <nav>
-                        <li className="logo">ChainReads</li>
+                        <li className="logo">
+                            <Link to="/">ChainReads</Link>
+                        </li>
                         <ul className="nav-list">
                             <li className="nav-list-item">
                                 <Link to="/add">Add Book</Link>
