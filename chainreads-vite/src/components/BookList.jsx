@@ -3,8 +3,10 @@ import { useContract, useContractRead } from "@thirdweb-dev/react";
 import Navbar from "./Navbar";
 import ill from "../assets/ill.png";
 import LandingPage from "./LandingPage";
+import { useNavigate } from "react-router-dom";
 
 function BookList() {
+    const navigate = useNavigate();
     const { contract } = useContract(
         "0x823E2acE55Ccca906A835f0E0Fe89a3a14Ce1E0b"
     );
@@ -56,7 +58,7 @@ function BookList() {
                             </tbody>
                         </table>
                     </div>
-                    <Navbar />
+                    <button onClick={() => navigate("/add")}>Add Book</button>
                 </div>
             </div>
         </>
