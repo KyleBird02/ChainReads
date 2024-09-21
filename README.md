@@ -1,4 +1,5 @@
 # ChainReads: BookWorm Exchange
+![](https://res.cloudinary.com/dsmmimu0q/image/upload/v1726883761/p8jte91hzq1mkufe14nw.png)
 
 Welcome to ChainReads, your gateway to a world of shared knowledge and literary adventures! ChainReads is a revolutionary decentralized book-sharing platform built on the Ethereum blockchain. Connect with fellow book enthusiasts, share your favorite reads, and dive into a vibrant global community of readers. With ChainReads, you're not just borrowing books; you're joining a movement that celebrates the joy of reading and fosters connections through stories.
 
